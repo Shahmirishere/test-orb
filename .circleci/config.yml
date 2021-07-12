@@ -4,22 +4,20 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
-  sofy: sofy-dot-ai/sofy@0.1.0
+  sofy: sofy-dot-ai/sofy@0.1.1
 # Orchestrate or schedule a set of jobs
 jobs: 
   sofy_job: 
     docker:       
       - image: buildpack-deps:trusty        
     steps:       
-      - sofy/connect_to_sofy
-          subscription_key: "31f4313b-d81c-46a0-9ce0-77c658380149"
-          apk_path: "C:\Users\shahm\Downloads\com.afwsamples.testdpc_7.0.2-7002_minAPI21(nodpi)_apkmirror.com.apk"
+      - sofy/connect_sofy:
+          subscription_key: '31f4313b-d81c-46a0-9ce0-77c658380149'
+          apk_path: 'C:\Users\shahm\Downloads\com.afwsamples.testdpc_7.0.2-7002_minAPI21(nodpi)_apkmirror.com.apk'
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
       - sofy_job
-
 
