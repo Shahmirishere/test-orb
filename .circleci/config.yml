@@ -5,28 +5,41 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
   sofy: sofy-dot-ai/sofy@0.1.8
-  android: circleci/android@0.2.0
+  android: circleci/android@1.0.3
 # Orchestrate or schedule a set of jobs
 jobs: 
-  build:
-   executor: android/android
-   steps:
-     - run: git clone "https://github.com/codinguser/gnucash-android.git"
-     - run: cd "gnucash-android"
-     - run:
-         command: ./gradlew build
-  sofy_job:
-    docker:       
-      - image: buildpack-deps:trusty         
+  release-build:
+    executor:
+      name: android/android-machine
+      resource-class: xlarge
     steps:
+      - run: git clone "https://github.com/codinguser/gnucash-android.git"
+      - run: cd "gnucash-android"
+      - checkout
+      - android/restore-gradle-cache
+      - android/restore-build-cache
+      - run:
+          name: Assemble release build
+          command: |
+            ./gradlew assembleRelease
+      - store_artifacts:
+          path: app/build/outputs/apk/release
       - sofy/connect_sofy:
           subscription_key: "acc80bd1-5cb7-4c89-a01e-2e7169009e52"
-          apk_path: "C:/Users/shahm/Downloads/app.apk"
+          apk_path: "app/build/outputs/apk/release/app-debug.apk"
+  # sofy_job:
+  #   docker:       
+  #     - image: circleci/android:api-29         
+  #   steps:
+      # - run: git clone "https://github.com/codinguser/gnucash-android.git"
+      # - run: cd "gnucash-android"
+      # - sofy/connect_sofy:
+      #     subscription_key: "acc80bd1-5cb7-4c89-a01e-2e7169009e52"
+      #     apk_path: "C:/Users/shahm/Downloads/app.apk"
 workflows:
   # Name the workflow "welcome"
-  send job:
+  sendjob:
     # Run the welcome/run job in its own container
     jobs:
-      - build
-      - sofy_job
+      - release-build
 
