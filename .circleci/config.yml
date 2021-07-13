@@ -11,7 +11,7 @@ jobs:
   release-build:
     executor:
       name: android/android-machine
-      resource-class: xlarge
+      resource-class: medium
     steps:
       - run: git clone "https://github.com/codinguser/gnucash-android.git"
       - run: cd "gnucash-android"
