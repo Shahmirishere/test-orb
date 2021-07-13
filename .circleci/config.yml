@@ -8,9 +8,7 @@ orbs:
   android: circleci/android@0.2.0
 # Orchestrate or schedule a set of jobs
 jobs: 
-  sofy_job: 
-    docker:       
-      - image: buildpack-deps:trusty        
+  sofy_job:         
     executor: android/android
     steps:
       - run: git clone "https://github.com/codinguser/gnucash-android.git"
