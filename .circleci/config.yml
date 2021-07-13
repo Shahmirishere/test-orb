@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: git clone "https://github.com/codinguser/gnucash-android.git"
       - run: cd "gnucash-android"
-      - checkout
+      # - checkout
       - android/restore-gradle-cache
       - android/restore-build-cache
       - run:
