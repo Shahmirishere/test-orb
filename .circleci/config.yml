@@ -12,8 +12,8 @@ jobs:
       - image: buildpack-deps:trusty        
     steps:       
       - sofy/connect_sofy:
-          subscription_key: 'acc80bd1-5cb7-4c89-a01e-2e7169009e52'
-          apk_path: 'C:\Users\shahm\Downloads\app.apk'
+          subscription_key: "acc80bd1-5cb7-4c89-a01e-2e7169009e52"
+          apk_path: "C:/Users/shahm/Downloads/app.apk"
 workflows:
   # Name the workflow "welcome"
   send job:
