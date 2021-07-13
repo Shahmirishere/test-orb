@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Assemble release build
           command: |
-            ./gradlew assembleRelease
+            cd "gnucash-android";./gradlew assembleRelease
       - store_artifacts:
           path: app/build/outputs/apk/release
       - sofy/connect_sofy:
