@@ -11,9 +11,12 @@ jobs:
   sofy_job: 
     docker:       
       - image: buildpack-deps:trusty        
+    executor: android/android
     steps:
       - run: git clone "https://github.com/codinguser/gnucash-android.git"
       - run: cd "gnucash-android"
+      - run:
+         command: ./gradlew build
       - sofy/connect_sofy:
           subscription_key: "acc80bd1-5cb7-4c89-a01e-2e7169009e52"
           apk_path: "C:/Users/shahm/Downloads/app.apk"
