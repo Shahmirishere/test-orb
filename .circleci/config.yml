@@ -11,10 +11,6 @@ jobs:
     docker:       
       - image: circleci/android:api-29         
     steps:
-      - run: curl https://portalvhdsld5gs9t7pkkvf.blob.core.windows.net/quantyzdandroidruns/c962bee0-6ebd-4a95-8653-c2166b021b16_Nothing_v1.6.2_apkpure.comeecd0050-1722-4452-bb53-851baeb3fdb5.apk --output app.apk
-      - run: pwd
-      - run: ls
-      - run: sha1sum /home/circleci/project/app.apk
       - sofy/connect_sofy:
           subscription_key: "acc80bd1-5cb7-4c89-a01e-2e7169009e52"
           apk_path: "/home/circleci/project/app.apk"
