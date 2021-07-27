@@ -7,16 +7,16 @@ orbs:
   sofy: sofy-ai/sofy@1.1.1
 # Orchestrate or schedule a set of jobs
 jobs:
-  build_job:
-	docker:
-	  - image: circleci/android:api-29
-	steps:
-	  # Add steps to build your app here
-	  # After your app building process is complete, add the following step with your 'Sofy Subscription Key' &
-	  # 'Build Path' to upload the build directly to SOFY AI
-	  - sofy/connect_sofy:
-		  subscription_key: "31f4313b-d81c-46a0-9ce0-77c658380149"
-		  build_path: "/home/circleci/project/app.apk"
+build_job:
+   docker:
+	- image: circleci/android:api-29
+   steps:
+	# Add steps to build your app here. After your app building process is complete, add the
+	following step with your 'Sofy Subscription Key' &
+	# 'Build Path' to upload the build directly to SOFY AI
+   - sofy/connect_sofy:
+	subscription_key: "31f4313b-d81c-46a0-9ce0-77c658380149"
+	build_path: "/home/circleci/project/app.apk"
 workflows:
   # Name the workflow "buildJob"
   appbuild:
