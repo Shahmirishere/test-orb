@@ -4,7 +4,7 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
-  sofy: sofy-ai/sofy@1.1.0
+  sofy: sofy-ai/sofy@1.1.1
 # Orchestrate or schedule a set of jobs
 jobs: 
   sofy_job:
