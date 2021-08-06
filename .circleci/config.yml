@@ -14,7 +14,7 @@ jobs:
           # Add steps to build your app here. After your app building process is complete, add the following step with your 'Sofy Subscription Key' &
           # 'Build Path' to upload the build directly to SOFY AI
           - sofy/connect_sofy:
-               subscription_key: "e61dbed9-fa67-4d2f-8415-793b2aacd0d8"
+               subscription_key: "1fd7014a-858e-4abe-853a-9b5abbdef0b7"
                build_path: "/home/circleci/project/app.apk"
 workflows:
   # Name the workflow "appbuild"
